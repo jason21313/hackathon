@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Interest Questions</title>
+    <link rel="stylesheet" type="text/css" href="../static/something.css">
+</head>
+<body>
+<h1>
+Interest Questions
+</h1>
+<h3 id="output">
+</h3>
+
+<br><br>
+
+<div style="text-align: center">
+        <h3>To return to the Home Page click the button labeled: "Go to Home Page"</h3>
+    <div style="display:flex; justify-content:center">
+    <button class="zoom-button" style="width: 200px; height: 50px; border-radius: 8px;background-color:lightblue" onclick="window.location.href='/'">Go to Home Page</button>
+    </div>
+    </div>
+
+<script>
+    const dict = {
+    1: ["Aiden in the United States invests $75,000 in a bank at the U.S. policy rate, while Sophia in Germany invests €75,000 in 10-year German government bonds. Who earns more after one year?", "Aiden"],
+    2: ["Arjun in India deposits ₹500,000 in a bank at the Indian policy rate, while Li in China invests the same amount in 10-year Chinese government bonds. Compare their one-year interest earnings.", "Arjun"],
+    3: ["Claire in France invests €45,000 at the French policy rate, while Max in Spain invests in 10-year Spanish government bonds. Which person’s investment provides a higher return?", "Max"],
+    4: ["Diego in Brazil invests R$200,000 at the Brazilian policy rate, while Olivia in Australia invests the same amount in 10-year Australian government bonds. Who earns more after one year?", "Diego"],
+    5: ["Hana in Japan deposits ¥1,500,000 at Japan’s policy rate, while Lucas in Canada invests the same amount in 10-year Canadian government bonds. Compare their annual returns.", "Lucas"],
+    6: ["Liam in the United Kingdom invests £60,000 at the UK policy rate, while Marco in Italy invests in 10-year Italian government bonds. Who earns more interest after one year?", "Liam"],
+    7: ["Chen in China invests ¥750,000 at the Chinese 1-year Loan Prime Rate, while Sophie in France invests the same amount in 10-year French government bonds. Which investment yields more?", "Sophie"],
+    8: ["Isabella in Italy invests €35,000 at the Italian policy rate, while Raj in India invests the same amount in 10-year Indian government bonds. Who earns more interest in one year?", "Raj"],
+    9: ["Ethan in Australia deposits A$90,000 at the Australian policy rate, while Gabriela in Brazil invests the same amount in 10-year Brazilian government bonds. Which investment earns more?", "Gabriela"],
+    10: ["Noah in Canada invests C$120,000 in a bank at Canada’s policy rate, while Aiko in Japan invests the same amount in 10-year Japanese government bonds. Who earns a higher return?", "Noah"],
+    11: ["Mia in the United States invests $30,000 at the U.S. policy rate, while Antoine in Germany invests the same amount in 10-year German government bonds. Compare their annual earnings.", "Mia"],
+    12: ["Arjun in India deposits ₹800,000 in a bank at the policy rate, while Chen in China invests in 10-year Chinese government bonds. Which investment provides a higher return?", "Arjun"],
+    13: ["Sophie in France invests €55,000 at the French policy rate, while Marco in Spain invests the same amount in 10-year Spanish government bonds. Who earns more interest in one year?", "Marco"],
+    14: ["Lucas in Brazil invests R$150,000 in a bank at the policy rate, while Olivia in Australia invests the same amount in 10-year government bonds. Which investment earns more?", "Lucas"],
+    15: ["Hana in Japan deposits ¥2,500,000 at the Japanese policy rate, while Noah in Canada invests in 10-year Canadian government bonds. Who earns a higher annual return?", "Noah"],
+    16: ["James in the United Kingdom invests £50,000 at the UK policy rate, while Priya in India invests the same amount in 10-year Indian government bonds. Which investment earns more interest?", "Priya"],
+    17: ["Chen in China invests ¥600,000 at the 1-year Loan Prime Rate, while Isabella in Italy invests the same amount in 10-year Italian government bonds. Who earns more after one year?", "Isabella"],
+    18: ["Isabella in Italy invests €40,000 at the Italian policy rate, while Ethan in Australia invests the same amount in 10-year Australian government bonds. Which investment yields a higher return?", "Ethan"],
+    19: ["Ethan in Australia deposits A$70,000 at the Australian policy rate, while Raj in India invests the same amount in 10-year Indian government bonds. Who earns more interest?", "Raj"],
+    20: ["Noah in Canada invests C$100,000 in a bank at Canada’s policy rate, while Lucas in Brazil invests the same amount in 10-year Brazilian government bonds. Compare their annual earnings and determine the better investment.", "Lucas"]
+}
+let keys = Object.keys(dict)
+
+for (let i=keys.length-1;i>0;i--){
+    const j=Math.floor(Math.random()*(i+1));
+    [keys[i],keys[j]]=[keys[j],keys[i]];
+}
+const outputDiv = document.getElementById('output');
+for (let i=1;i<=5;i++){
+    const h = document.createElement('h');
+    const p = document.createElement('p');
+    h.textContent='Question ' + i;
+    p.textContent=dict[keys[i-1]][0];
+    outputDiv.appendChild(h);
+    outputDiv.appendChild(p);
+    const inputElement = document.createElement('input');
+    inputElement.type='text';
+    inputElement.placeholder="Enter your answer";
+    inputElement.id='input'+i;
+    outputDiv.appendChild(inputElement);
+    const button = document.createElement('button');
+    button.textContent='Submit';
+    button.addEventListener('click', ()=>{
+    check(dict[keys[i-1]][1],inputElement.id);
+    });
+    outputDiv.appendChild(button)
+    outputDiv.appendChild(document.createElement('br'));
+    outputDiv.appendChild(document.createElement('br'));
+}
+
+    function check(ans,inputName){
+    const userInput=document.getElementById(inputName);
+    const correct=ans;
+    if (userInput.value.toLowerCase() === correct.toLowerCase()){
+    userInput.style.backgroundColor = "lightgreen";
+    } else{
+    userInput.placeholder = "Try again";
+    userInput.style.backgroundColor = "lightcoral";
+    }
+    let win = true;
+    for( let i=1;i<=5;i++){
+    if(document.getElementById('input'+i).style.backgroundColor!='lightgreen')
+    win = false;
+    }
+    if (win){
+    window.location.href='/win'
+    }
+    }
+</script>
+</body>
+</html>

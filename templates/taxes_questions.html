@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Taxes Questions</title>
+    <link rel="stylesheet" type="text/css" href="../static/something.css">
+</head>
+<body>
+    <h1>
+Taxes Questions
+</h1>
+<h3 id="output">
+</h3>
+
+<br><br>
+
+<div style="text-align: center">
+        <h3>To return to the Home Page click the button labeled: "Go to Home Page"</h3>
+    <div style="display:flex; justify-content:center">
+    <button class="zoom-button" style="width: 200px; height: 50px; border-radius: 8px;background-color:lightblue" onclick="window.location.href='/'">Go to Home Page</button>
+    </div>
+</div>
+
+<script>
+    const dict = {
+     1: ["Emma in the United States (Single) earns $58000 this year. How much federal income tax will she owe before credits?", "4831.50"],
+  2: ["Raj in India earns ₹1500000 under the new tax regime. How much tax does he owe after the standard deduction?", "93750.00"],
+  3: ["Sophie in France earns €35000. Calculate her income tax.", "3665.48"],
+  4: ["Diego in Brazil earns R$5000. What is his federal income tax?", "505.59"],
+  5: ["Hana in Japan earns ¥7500000. Determine her income tax before the reconstruction surtax.", "1089000.00"],
+  6: ["Liam in the United Kingdom earns £50000. What is his income tax liability?", "7486.00"],
+  7: ["Chen in China earns ¥200000. Calculate his income tax.", "23080.00"],
+  8: ["Isabella in Italy earns €55000. Determine her tax liability.", "16290.00"],
+  9: ["Ethan in Australia earns A$140000. Calculate his income tax.", "33138.00"],
+  10: ["Noah in Canada earns C$120000. Determine his federal tax liability.", "21733.12"],
+  11: ["Mia in the United States (Head of Household) earns $85000. How much tax does she owe before credits?", "7025.00"],
+  12: ["Arjun in India earns ₹2200000. Calculate his income tax under the new regime.", "231250.00"],
+  13: ["Claire in France earns €70000. Determine her tax liability.", "14165.48"],
+  14: ["Lucas in Brazil earns R$4200. What is his federal tax?", "308.87"],
+  15: ["Hana in Japan earns ¥10000000. Determine her total tax including reconstruction surtax.", "1801044.00"],
+  16: ["James in the United Kingdom earns £130000. What is his tax liability?", "44703.00"],
+  17: ["Chen in China earns ¥450000. Calculate his income tax.", "82080.00"],
+  18: ["Isabella in Italy earns €42000. Determine her federal tax.", "11340.00"],
+  19: ["Ethan in Australia earns A$50000. Calculate his federal tax.", "5788.00"],
+  20: ["Noah in Canada earns C$60000. What is his tax liability?", "9144.38"],
+  21: ["Sophia in France earns €20000. Calculate her tax.", "935.33"],
+  22: ["Lucas in Brazil earns R$3600. Determine his federal income tax.", "185.20"],
+  23: ["Emma in the United States (Married Filing Jointly) earns $300000 with her spouse. How much tax is owed before credits?", "50134.00"],
+  24: ["Hiroshi in Japan earns ¥18000000. Calculate tax including reconstruction surtax.", "4496484.00"],
+  25: ["Liam in the United Kingdom earns £35000. Determine his tax liability.", "4486.00"],
+  26: ["Chen in China earns ¥750000. Calculate his tax.", "176580.00"],
+  27: ["Isabella in Italy earns €28000. Determine her tax.", "6440.00"],
+  28: ["Ethan in Australia earns A$190000. Calculate his federal tax.", "51638.00"],
+  29: ["Noah in Canada earns C$200000. What is his federal tax?", "43196.67"],
+  30: ["Raj in India earns ₹1050000. Calculate tax after the rebate.", "0.00"],
+  31: ["Sophie in France earns €85000. Determine her tax.", "18794.95"],
+  32: ["Diego in Brazil earns R$2800. What is his federal tax?", "67.20"],
+  33: ["Hana in Japan earns ¥2500000. Calculate her tax.", "1525000.00"],
+  34: ["James in the United Kingdom earns £90000. Determine tax liability.", "23432.00"],
+  35: ["Chen in China earns ¥1000000. Calculate his tax.", "268080.00"],
+  36: ["Isabella in Italy earns €55000. Determine her federal tax.", "16290.00"],
+  37: ["Ethan in Australia earns A$35000. Calculate his federal tax.", "2688.00"],
+  38: ["Noah in Canada earns C$50000. Determine tax liability.", "7500.00"],
+  39: ["Arjun in India earns ₹1800000. Calculate his tax.", "145000.00"],
+  40: ["Sophie in France earns €12000. Determine tax liability.", "55.33"],
+  41: ["Lucas in Brazil earns R$4800. What is his federal tax?", "450.59"],
+  42: ["Emma in the United States (Single) earns $20000. Calculate her federal tax before credits.", "425.00"],
+  43: ["Hiroshi in Japan earns ¥5000000. Determine tax including reconstruction surtax.", "584522.50"],
+  44: ["Liam in the United Kingdom earns £15000. What is his tax liability?", "486.00"],
+  45: ["Chen in China earns ¥800000. Calculate his tax.", "194080.00"],
+  46: ["Isabella in Italy earns €33000. Determine her federal tax.", "8190.00"],
+  47: ["Ethan in Australia earns A$140000. Calculate federal tax.", "33138.00"],
+  48: ["Noah in Canada earns C$280000. Determine federal tax.", "67460.10"],
+  49: ["Raj in India earns ₹650000. Calculate tax after standard deduction and rebate.", "0.00"],
+  50: ["Sophie in France earns €180000. Determine her tax liability.", "57744.95"],
+  51: ["Diego in Brazil earns R$5500. Calculate federal tax.", "643.09"],
+  52: ["Hana in Japan earns ¥25000000. Determine total tax including surtax.", "7355284.00"]
+    }
+let keys = Object.keys(dict)
+
+for (let i=keys.length-1;i>0;i--){
+    const j=Math.floor(Math.random()*(i+1));
+    [keys[i],keys[j]]=[keys[j],keys[i]];
+}
+const outputDiv = document.getElementById('output');
+for (let i=1;i<=5;i++){
+    const h = document.createElement('h');
+    const p = document.createElement('p');
+    h.textContent='Question ' + i;
+    p.textContent=dict[keys[i-1]][0];
+    outputDiv.appendChild(h);
+    outputDiv.appendChild(p);
+    const inputElement = document.createElement('input');
+    inputElement.type='text';
+    inputElement.placeholder="Enter your answer";
+    inputElement.id='input'+i;
+    outputDiv.appendChild(inputElement);
+    const button = document.createElement('button');
+    button.textContent='Submit';
+    button.addEventListener('click', ()=>{
+    check(dict[keys[i-1]][1],inputElement.id);
+    });
+    outputDiv.appendChild(button)
+    outputDiv.appendChild(document.createElement('br'));
+    outputDiv.appendChild(document.createElement('br'));
+}
+
+    function check(ans,inputName){
+    const userInput=document.getElementById(inputName);
+    const correct=ans;
+    if (userInput.value === correct){
+    userInput.style.backgroundColor = "lightgreen";
+    } else{
+    userInput.placeholder = "Try again";
+    userInput.style.backgroundColor = "lightcoral";
+    }
+    let win = true;
+    for( let i=1;i<=5;i++){
+    if(document.getElementById('input'+i).style.backgroundColor!='lightgreen')
+    win = false;
+    }
+    if (win){
+    window.location.href='/win'
+    }
+    }
+</script>
+</body>
+</html>

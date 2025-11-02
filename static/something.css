@@ -1,0 +1,23 @@
+.zoom_button{
+transition: transform 0.2s ease-in-out;
+}
+
+.zoom-button:active{
+transform:scale(1.1);
+}
+
+.overlay-element{
+position:absolute;
+display: none;
+top: 1%;
+left: 25%;
+width: 50%;
+height:50%px;
+background-color:black;
+color:white;
+padding: 25px;
+z-index:9999;
+white-space: pre-line;
+text-align: center;
+border-radius: 15px;
+}

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Interest Information</title>
+    <link rel="stylesheet" type="text/css" href="../static/something.css">
+</head>
+<body>
+    <div class="overlay-element" id="country"></div>
+    <h1>Interest Information</h1>
+    <h2>Definitions:</h2>
+    <h3 style="margin-right: 500px">Policy Rates are the key interest rates set by a central bank to influence a nation’s economy through monetary policy. It serves as a benchmark that affects other interest rates, such as those for mortgages and savings accounts, thereby managing inflation, credit availability, and economic activity.<br><br>
+        Government Yield Bonds are the returns on a government debt security, influenced by market rates and economic expectations. Policy rates do affect these bonds because these are the baselines for the other interest rates. This represents the interest rate you get for lending money.
+    </h3>
+    <h2>Formulas:</h2>
+    <h3>
+    (Rates must converted into decimals) (Example: 2% = 0.02)<br>
+    Simple Interest Formula is I = Prt<br>
+    I = Interest<br>
+    P = Initial Value<br>
+    r = Policy Rate<br>
+    t = time in words<br><br>
+    Compound Interest Formula is A = P(1 + (r / n))^nt<br>
+    A = Future Value<br>
+    P = Initial Value<br>
+    r = Policy Rate<br>
+    n = number of times compounded in “t”<br>
+    t = time<br><br>
+    Continuously Compounded Interest is A = Pe^rt<br>
+    A = Future Value<br>
+    P = Interest Value<br>
+    r = Policy Rate<br>
+    t = time in years<br>
+    </h3>
+    <br><br><br><br><br>
+    <h2 style="text-align:center">Click on a Country to show its Policy Rate and Government Yield Bonds</h2>
+    <div style="text-align:center;border-radius:8px" class="button-container">
+        <button style="background-color:lightgreen" onclick="changeDiv('United States')">United States</button>
+        <button style="background-color:lightgreen" onclick="changeDiv('United Kingdom')">United Kingdom</button>
+        <button style="background-color:lightgreen" onclick="changeDiv('France')">France</button>
+        <button style="background-color:lightgreen" onclick="changeDiv('Germany')">Germany</button>
+        <button style="background-color:lightgreen" onclick="changeDiv('Italy')">Italy</button>
+        <button style="background-color:lightgreen" onclick="changeDiv('Spain')">Spain</button>
+        <button style="background-color:lightgreen" onclick="changeDiv('Japan')">Japan</button>
+        <button style="background-color:lightgreen" onclick="changeDiv('China')">China</button>
+        <button style="background-color:lightgreen" onclick="changeDiv('India')">India</button>
+        <button style="background-color:lightgreen" onclick="changeDiv('Canada')">Canada</button>
+        <button style="background-color:lightgreen" onclick="changeDiv('Australia')">Australia</button>
+        <button style="background-color:lightgreen" onclick="changeDiv('Brazil')">Brazil</button>
+        <button style="background-color:lightgreen" onclick="changeDiv('South Korea')">South Korea</button>
+    </div>
+    <br>
+<div style="text-align: center">
+        <h3>To return to the Home Page click the button labeled: "Go to Home Page"</h3>
+    <div style="display:flex; justify-content:center">
+    <button class="zoom-button" style="width: 200px; height: 50px;border-radius:8px;background-color:lightblue" onclick="window.location.href='/'">Go to Home Page</button>
+        </div>
+    </div>
+<script>
+    const dict = { "United States": "Policy Rate: 3.85%\nGovernment Bond Yield: 4.08%\n\nTable 1. 2025 Federal Income Tax Brackets, Single Taxpayers\n10% for $0–$11,925\n12% for $11,926–$48,475\n22% for $48,476–$103,350\n24% for $103,351–$197,300\n32% for $197,301–$250,525\n35% for $250,526–$626,350\n37% for $626,351+\n\nTable 2. 2025 Federal Income Tax Brackets, Head of Household Taxpayers\n10% for $0–$17,000\n12% for $17,001–$64,850\n22% for $64,851–$103,350\n24% for $103,351–$197,300\n32% for $197,301–$250,500\n35% for $250,501–$626,350\n37% for $626,351+\n\nTable 3. 2025 Federal Income Tax Brackets, Married Taxpayers Filing Jointly\n10% for $0–$23,850\n12% for $23,851–$96,950\n22% for $96,951–$206,700\n24% for $206,701–$394,600\n32% for $394,601–$501,050\n35% for $501,051–$751,600\n37% for $751,601+\n\nTable 4. 2025 Federal Standard Deduction\n$15,750 for Single\n$23,625 for Head of Household\n$31,500 for Married Filing Jointly\n\nTable 6. 2025 Rules for Common Credits (Simplified)\nChild Tax Credit (CTC): $2,200 (non-refundable)\nAdditional Child Tax Credit (ACTC): $1,700 (refundable)\nEligibility for Full Credit: $400,000 (joint) / $200,000 (others)\nPhase-Out: $50 per $1,000 above thresholds",
+
+  "United Kingdom": "Policy Rate: 4.00%\nGovernment Bond Yield: 4.40%\n\nTax year 2025-26\nPersonal allowance: £12,570 (tax-free)\nIncome tax bands:\n20% on £1–£37,700\n40% on £37,701–£125,140\n45% on over £125,140",
+
+  "France": "Policy Rate: 2.00%\nGovernment Bond Yield: 3.43%\n\nUp to €11,497: 0%\n€11,498–€29,315: 11%\n€29,316–€83,823: 30%\n€83,824–€180,294: 41%\nOver €180,295: 45%",
+
+  "Germany": "Policy Rate: 2.00%\nGovernment Bond Yield: 2.63%\n\nUp to €12,096: 0%\n€12,096–€68,429: 25%\nOver €68,430: 42%\nOver €277,825: 45%",
+
+  "Italy": "Policy Rate: 2.00%\nGovernment Bond Yield: 3.47%\n\nUp to €28,000: 23%\n€28,001–€50,000: 35%\nOver €50,000: 43%",
+
+  "Spain": "Policy Rate: 2.00%\nGovernment Bond Yield: 3.18%\n\n€0–€12,450: 19%\n€12,450–€20,200: 24%\n€20,200–€35,200: 30%\n€35,200–€60,000: 37%\n€60,000–€300,000: 45%\nOver €300,000: 47%",
+
+  "Japan": "Policy Rate: 0.50%\nGovernment Bond Yield: 1.66%\n\nUp to ¥1,950,000: 5%\n¥1,950,001–¥3,300,000: 10%\n¥3,300,001–¥6,950,000: 20%\n¥6,950,001–¥9,000,000: 23%\n¥9,000,001–¥18,000,000: 33%\n¥18,000,001–¥40,000,000: 40%\nOver ¥40,000,000: 45%\nPlus 2.1% reconstruction surtax",
+
+  "China": "Policy Rate: 3.00%\nGovernment Bond Yield: 1.75%\n\nUp to ¥36,000: 3%\n¥36,001–144,000: 10%\n¥144,001–300,000: 20%\n¥300,001–420,000: 25%\n¥420,001–660,000: 30%\n¥660,001–960,000: 35%\nOver ¥960,000: 45%",
+
+  "India": "Policy Rate: 5.50%\nGovernment Bond Yield: 6.59%\n\nNew tax regime FY 2025-26\n₹0–₹4,00,000: 0%\n₹4,00,001–₹8,00,000: 5%\n₹8,00,001–₹12,00,000: 10%\n₹12,00,001–₹16,00,000: 15%\n₹16,00,001–₹20,00,000: 20%\n₹20,00,001–₹24,00,000: 25%\n₹24,00,001 and above: 30%\nTaxpayers up to ₹12 lakh pay no tax (rebate)\nStandard deduction: ₹75,000",
+
+  "Canada": "Policy Rate: 2.25%\nGovernment Bond Yield: 3.12%\n\nFederal rates:\n15% up to C$57,375\n20.5% on C$57,376–C$114,750\n26% on C$114,751–C$177,882\n29% on C$177,883–C$253,414\n33% on over C$253,414",
+
+  "Australia": "Policy Rate: 3.60%\nGovernment Bond Yield: 4.32%\n\nA$0–A$18,200: 0%\nA$18,201–A$45,000: 16%\nA$45,001–A$135,000: A$4,288 + 30% of excess\nA$135,001–A$190,000: A$31,288 + 37% of excess\nOver A$190,000: A$51,638 + 45% of excess",
+
+  "Brazil": "Policy Rate: 15.00%\nGovernment Bond Yield: 13.80%\n\nUp to BRL 1,903.98: 0%\nBRL 1,903.99–2,826.65: 7.5%\nBRL 2,826.66–3,751.05: 15%\nBRL 3,751.06–4,665.68: 22.5%\nOver BRL 4,665.69: 27.5%",
+
+  "South Korea": "Policy Rate: 2.50%\nGovernment Bond Yield: 3.03%\n\nUp to ₩14,000: 6%\n₩14,001–₩50,000: 15%\n₩50,001–₩88,000: 24%\n₩88,001–₩150,000: 35%\n₩150,001–₩300,000: 38%\n₩300,001–₩500,000: 40%\nOver ₩1,000,000: 45%\nPlus 10% local income tax"
+
+    };
+
+    const currentCountry = '';
+    function changeDiv(country){
+    document.getElementById('country').innerHTML='';
+    const myDiv = document.getElementById('country');
+    const h = document.createElement('h');
+    const p = document.createElement('p');
+    h.textContent = country;
+    p.textContent = dict[country];
+    myDiv.appendChild(h);
+    myDiv.appendChild(p);
+
+    if(myDiv.style.display == 'none' || country == currentCountry){
+    myDiv.style.display='block';
+    } else{
+    myDiv.style.display='none';
+    }
+    currentCountry=country;
+    }
+</script>
+
+</body>
+</html>
