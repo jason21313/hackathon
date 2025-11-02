@@ -1,5 +1,4 @@
 from flask import Flask, render_template, request, jsonify, render_template_string
-import tkinter as tk
 
 app = Flask(__name__)
 
