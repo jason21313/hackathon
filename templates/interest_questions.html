@@ -44,18 +44,20 @@ Interest Questions
     19: ["Ethan in Australia deposits A$70,000 at the Australian policy rate, while Raj in India invests the same amount in 10-year Indian government bonds. Who earns more interest?", "Raj"],
     20: ["Noah in Canada invests C$100,000 in a bank at Canada’s policy rate, while Lucas in Brazil invests the same amount in 10-year Brazilian government bonds. Compare their annual earnings and determine the better investment.", "Lucas"]
 }
-let keys = Object.keys(dict)
-
-for (let i=keys.length-1;i>0;i--){
-    const j=Math.floor(Math.random()*(i+1));
-    [keys[i],keys[j]]=[keys[j],keys[i]];
+const questions = [];
+while (questions.length < 5) {
+    const j = Math.floor(Math.random() * 20) + 1;
+    if (!questions.includes(j)) {
+        questions.push(j);
+    }
 }
+
 const outputDiv = document.getElementById('output');
 for (let i=1;i<=5;i++){
     const h = document.createElement('h');
     const p = document.createElement('p');
     h.textContent='Question ' + i;
-    p.textContent=dict[keys[i-1]][0];
+    p.textContent=dict[questions[i-1]][0];
     outputDiv.appendChild(h);
     outputDiv.appendChild(p);
     const inputElement = document.createElement('input');
@@ -66,7 +68,7 @@ for (let i=1;i<=5;i++){
     const button = document.createElement('button');
     button.textContent='Submit';
     button.addEventListener('click', ()=>{
-    check(dict[keys[i-1]][1],inputElement.id);
+    check(dict[questions[i-1]][1],inputElement.id);
     });
     outputDiv.appendChild(button)
     outputDiv.appendChild(document.createElement('br'));
